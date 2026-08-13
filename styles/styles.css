@@ -196,27 +196,7 @@ body {
 }
 
 @media (max-width: 600px) {
-    .cardapio {
-        padding: 40px 6%;
-        gap: 40px;
-    }
-
-    .cardapio__titulo {
-        font-size: 2.2rem;
-    }
-
-    .cardapio__item__foto {
-        width: 56px;
-        height: 56px;
-    }
-
-    .cardapio__item__nome {
-        font-size: 1rem;
-    }
-
-    .cardapio__item__preco {
-        font-size: 1rem;
-    }
+    
 }
 
 /* MEDIA QUERIES */
