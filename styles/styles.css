@@ -27,7 +27,7 @@ body {
 }
 
 .cabecalho__menu {
-    background-color: var(--cor-quaternaria);
+    background-color: var(--cor-secundaria);
     padding: 1%;
     display: flex;
     gap: 120px;
@@ -47,6 +47,10 @@ body {
     font-size: 1.56rem;
     text-decoration: none;
     color: var(--cor-primaria);
+}
+
+.cabecalho__hamburguer {
+    display: none; /* fica escondido no desktop */
 }
 
 .brownie-fe {
@@ -86,7 +90,7 @@ body {
 }
 
 .rodape {
-    background-color: var(--cor-quaternaria);
+    background-color: var(--cor-secundaria);
     font-family: var(--fonte-primaria);
     color: var(--cor-primaria);
     font-size: 1.56rem;
@@ -235,9 +239,48 @@ body {
 }
 
 @media (max-width: 600px) {
+    .cabecalho__hamburguer {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 28px;
+        height: 20px;
+        background: var(--cor-secundaria);
+        border: none;
+        cursor: pointer;
+        position: fixed;
+        top: 14px;
+        right: 20px;
+        z-index: 20;
+    }
+
+    .cabecalho__hamburguer span {
+        display: block;
+        height: 3px;
+        width: 100%;
+        background-color: var(--cor-primaria);
+        border-radius: 2px;
+    }
+
     .cabecalho__menu {
-        gap: 24px;              /* menu não quebra tanto em telas pequenas */
-        font-size: 0.9rem;
+        flex-direction: column;
+        gap: 0;
+        height: 0;
+        overflow: hidden;
+        transition: height 0.3s ease;
+        padding: 0;
+    }
+
+    .cabecalho__menu.cabecalho__menu--aberto {
+        height: auto;
+        padding: 1rem 0;
+        background-color: var(--cor-secundaria);
+        opacity: 0.7;
+    }
+
+    .cabecalho__menu__link {
+        padding: 10px 0;
+        text-align: center;
     }
 
     .cardapio {

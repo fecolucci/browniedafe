@@ -8,9 +8,15 @@
     <link rel="stylesheet" href="./styles/styles.css">
     <link rel="stylesheet" href="./styles/reset.css">
 </head>
+
 <body>
     <header class="cabecalho">
-        <nav class="cabecalho__menu">
+        <button class="cabecalho__hamburguer" id="menuBtn" aria-label="Abrir menu" aria-expanded="false">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <nav class="cabecalho__menu" id="menuNav">
             <a class="cabecalho__menu__link" href="index.html">Página Inicial</a>
             <a class="cabecalho__menu__link" href="cardapio.html">Cardápio</a>
             <a class="cabecalho__menu__link" href="planos.html">Contato</a>
@@ -64,5 +70,15 @@
     <footer class="rodape">
         Faça sua encomenda: - Fernanda Bartholomeu - 21 97430 5000.
     </footer>
+        <script>
+        const menuBtn = document.getElementById('menuBtn');
+        const menuNav = document.getElementById('menuNav');
+
+        menuBtn.addEventListener('click', () => {
+            menuNav.classList.toggle('cabecalho__menu--aberto');
+            const aberto = menuNav.classList.contains('cabecalho__menu--aberto');
+            menuBtn.setAttribute('aria-expanded', aberto);
+        });
+        </script>
 </body>
 </html>
