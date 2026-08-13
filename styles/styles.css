@@ -1,9 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Gabriela&display=swap');
 
 :root {
-    --cor-primaria: #EFECEE;
-    --cor-secundaria: #DB97BB;
-    --cor-terciaria: #E178C5;
+    --cor-primaria: #7C8F6A;
+    --cor-secundaria: #D9C8B4;
+    --cor-terciaria: #3e451b;
+    --cor-quaternaria: #F5F1E6;
 
     --fonte-primaria: "Gabriela", serif;
 }
@@ -26,15 +27,18 @@ body {
 }
 
 .cabecalho__menu {
-    background-color: var(--cor-secundaria);
+    background-color: var(--cor-quaternaria);
     padding: 1%;
     display: flex;
     gap: 120px;
     justify-content: center;
+    flex-wrap: wrap;      /* evita que o menu quebre o layout se não couber */
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
+    z-index: 10;           /* garante que fique sempre por cima */
+    box-sizing: border-box;
 }
 
 .cabecalho__menu__link {
@@ -45,45 +49,45 @@ body {
     color: var(--cor-primaria);
 }
 
-.declaracao {
+.brownie-fe {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 100px 25% 100px 25%;
+    padding: 100px 5%;
     box-sizing: border-box;
 }
 
-.declaracao__texto{
+.brownie-fe__texto{
     display: flex;
     flex-direction: column;
     gap: 40px;
     box-sizing: border-box;
+    flex: 1 1 45%;
 }
 
-.declaracao__texto__titulo {
+.brownie-fe__texto__paragrafo {
     font-family: var(--fonte-primaria);
-    font-size: 3.75rem;
+    font-size: 1.3rem;
     color: var(--cor-secundaria);
-    margin-top: 1.5rem;
-}
-
-.declaracao__texto__paragrafo {
-    font-family: var(--fonte-primaria);
-    font-size: 1.5rem;
-
 }
 
 .foto__principal {
-    max-width: 100%;
+    max-width: 45%;
     height: auto;
     border-radius: 50px;
-    border: solid 7px var(--cor-secundaria);
+    /* border: solid 3px var(--cor-secundaria); */
     margin: 50px;
+}
 
+.foto__logo {
+    display: block;
+    max-width: 70%;
+    height: auto;
+    margin: 30px auto 0 auto;
 }
 
 .rodape {
-    background-color: var(--cor-secundaria);
+    background-color: var(--cor-quaternaria);
     font-family: var(--fonte-primaria);
     color: var(--cor-primaria);
     font-size: 1.56rem;
@@ -94,6 +98,122 @@ body {
     left: 0;
     width: 100%;
     margin-top: 20px;
+}
+
+/*CARDAPIO*/
+
+.cardapio {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 60px 10%;
+    padding-top: calc(60px + 5rem); /* espaço extra = altura aproximada do header fixo */
+    box-sizing: border-box;
+    gap: 60px;
+}
+
+.cardapio__titulo {
+    font-family: var(--fonte-primaria);
+    font-size: clamp(2rem, 6vw, 3rem);
+    color: var(--cor-secundaria);
+    text-align: center;
+    margin: 0;
+    padding: 0 1rem;
+    line-height: 1.2;
+}
+
+.cardapio__categoria {
+    width: 100%;
+    max-width: 600px;
+}
+
+.cardapio__lista {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.cardapio__item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 10px 16px;
+    border-bottom: 1px solid var(--cor-secundaria);
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.cardapio__item:hover {
+    background-color: var(--cor-secundaria);
+    border-radius: 12px;
+}
+
+.cardapio__item:hover .cardapio__item__nome,
+.cardapio__item:hover .cardapio__item__preco,
+.cardapio__item:hover .cardapio__item__sabor {
+    color: var(--cor-primaria);
+}
+
+.cardapio__item__foto {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 1px solid var(--cor-secundaria);
+    flex-shrink: 0;
+    transition: 0.2s ease;
+}
+
+.cardapio__item:hover .cardapio__item__foto {
+    border-color: var(--cor-primaria);
+}
+
+.cardapio__item__nome {
+    font-family: var(--fonte-primaria);
+    font-size: 1.2rem;
+    color: var(--cor-secundaria);
+    flex: 1;
+    transition: 0.2s ease;
+}
+
+.cardapio__item__preco {
+    font-family: var(--fonte-primaria);
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: var(--cor-secundaria);
+    flex-shrink: 0;
+    transition: 0.2s ease;
+}
+
+.cardapio__item__sabor{
+    color: var(--cor-terciaria);
+    font-weight: bold;
+}
+
+@media (max-width: 600px) {
+    .cardapio {
+        padding: 40px 6%;
+        gap: 40px;
+    }
+
+    .cardapio__titulo {
+        font-size: 2.2rem;
+    }
+
+    .cardapio__item__foto {
+        width: 56px;
+        height: 56px;
+    }
+
+    .cardapio__item__nome {
+        font-size: 1rem;
+    }
+
+    .cardapio__item__preco {
+        font-size: 1rem;
+    }
 }
 
 /*PAGINA DE FOTOS*/
@@ -173,7 +293,7 @@ body {
 }
 
 .botao__enviar:focus, .botao__enviar:hover {
-    background-color: var(--cor-terciaria);
+    background-color: var(--cor-secundaria);
 }
 
 .amo-voce__paragrafo {
@@ -186,5 +306,54 @@ body {
 }
 
 .destaque {
-    color: var(--cor-terciaria);
+    color: var(--cor-secundaria);
+}
+
+/* MEDIA QUERIES */
+
+@media (max-width: 768px) {
+    .brownie-fe {
+        flex-direction: column;
+        padding: 40px 5%;
+    }
+
+    .brownie-fe__texto {
+        flex-basis: auto;
+        width: 100%;
+    }
+
+    .foto__principal {
+        max-width: 100%;
+        margin: 30px 0;
+    }
+}
+
+@media (max-width: 600px) {
+    .cabecalho__menu {
+        gap: 24px;              /* menu não quebra tanto em telas pequenas */
+        font-size: 0.9rem;
+    }
+
+    .cardapio {
+        padding: 40px 6%;
+        padding-top: calc(40px + 4rem); /* ajustado pra header mais baixo */
+        gap: 40px;
+    }
+
+    .cardapio__titulo {
+        font-size: 2.2rem;
+    }
+
+    .cardapio__item__foto {
+        width: 56px;
+        height: 56px;
+    }
+
+    .cardapio__item__nome {
+        font-size: 1rem;
+    }
+
+    .cardapio__item__preco {
+        font-size: 1rem;
+    }
 }
